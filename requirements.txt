@@ -6,4 +6,4 @@ python-dateutil==2.4.2
 requests==2.8.1
 whitenoise==3.2
 dj-database-url==0.4.1
-trello=0.9.1
+trello==0.9.1
