@@ -30,6 +30,7 @@ document.getElementById('RobinAuth').onclick = function () {
 
     $.ajax({
         url: 'https://robin-app.herokuapp.com/auth/login/',
+        type: 'POST', 
         data: {
             username: $('#username').val(),
             password: $('#password').val()
