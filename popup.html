@@ -11,8 +11,8 @@
       body {
         font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
         font-size: 100%;
-        width: 600px;
-        height: 600px;
+        width: 180px;
+        height: 100px;
       }
       #status {
         /* avoid an excessively wide status text */
@@ -30,18 +30,21 @@
         text-decoration: none;
         outline: none;
         color: #fff;
-        background-color: #4CAF50;
+        background-color: #FF5733;
         border: none;
         border-radius: 15px;
         box-shadow: 0 9px #999;
         }
 
-    .button:hover {background-color: #3e8e41}
+    .button:hover {background-color: #FF5733}
 
         .button:active {
-        background-color: #3e8e41;
+        background-color: #FF5733;
         box-shadow: 0 5px #666;
         transform: translateY(4px);
+        }
+        .title {
+            text-align: center;
         }
     </style>
 
@@ -54,10 +57,10 @@
   </head>
   <body>
       <div class="title">
-          Robin
-      </div>
       <!-- onclick="window.open('https://trello.com/1/authorize?expiration=never&name=Robin&key=1c4e6885b9d06b44eff07db8fb63b45f')" -->
-      <button type="button" id="TrelloAuth">ClickMe!</button>
+      <button class="button" id="TrelloAuth">Authorize Trello</button>
+  </div>
+
   </body>
   <script src="background.js"></script>
   <script src="customJquery.js"></script>
