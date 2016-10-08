@@ -7,3 +7,4 @@ requests==2.8.1
 whitenoise==3.2
 dj-database-url==0.4.1
 trello==0.9.1
+google-api-python-client==1.5.2

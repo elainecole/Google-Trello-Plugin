@@ -50,7 +50,7 @@ hk.HelloView = BB.View.extend({
     googleAuth: function () {
         $.ajax({
             type: 'POST',
-            url: '/api/get_user_boards/'
+            url: '/api/store_google_info/'
         });
     }
 });
