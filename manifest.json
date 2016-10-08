@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+
+  "name": "TrelCal",
+  "description": "This extension idk yet",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "robin.png",
+    "default_popup": "popup.html",
+    "default_title": "Click here!"
+  },
+  "permissions": [
+    "activeTab",
+    "https://ajax.googleapis.com/"
+  ]
+}
