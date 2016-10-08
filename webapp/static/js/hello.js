@@ -30,13 +30,27 @@ hk.HelloView = BB.View.extend({
     },
 
     events: {
-        'click .trello-auth': 'trelloAuth'
+        'click .trello-auth': 'trelloAuth',
+        'click .google-auth': 'googleAuth',
+
     },
 
     trelloAuth: function () {
         Trello.authorize({
             type: 'popup',
-            name: 'Getting Started Application',
+            name: 'Robin',
+            scope: {
+            read: 'true',
+            write: 'true' },
+            expiration: 'never',
+            success: this.authSuccess,
+            error: this.authFail
+        });
+    },
+    googleAuth: function () {
+        Google.authorize({
+            type: 'popup',
+            name: 'Robin',
             scope: {
             read: 'true',
             write: 'true' },
