@@ -1,25 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <script type="text/javascript" src="chrome_ex_oauthsimple.js"></script>
-        <script type="text/javascript" src="chrome_ex_oauth.js"></script>
-        <script type="text/javascript" src="onload.js"></script>
-        <script type="text/javascript">
-        var oauth = ChromeExOAuth.initBackgroundPage({
-            'request_url': 'https://www.google.com/accounts/OAuthGetRequestToken',
-            'authorize_url': 'https://www.google.com/accounts/OAuthAuthorizeToken',
-            'access_url': 'https://www.google.com/accounts/OAuthGetAccessToken',
-            'consumer_key': 'anonymous',
-            'consumer_secret': 'anonymous',
-            'scope': 'https://www.googleapis.com/auth/calendar',
-            'app_name': 'Robin'
-        });
-        </script>
+  <head>
+    <title>Robin</title>
+    <style>
+      body {
+        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+        font-size: 100%;
+        width: 600px;
+        height: 600px;
+      }
+      #status {
+        /* avoid an excessively wide status text */
+        white-space: pre;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        /*max-width: 400px;*/
+      }
+      .button {
+        display: inline-block;
+        padding: 15px 25px;
+        font-size: 24px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 9px #999;
+        }
 
-        <title>Robin</title>
-    </head>
-    <body>
+    .button:hover {background-color: #3e8e41}
 
-    </body>
+        .button:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+        }
+    </style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+     -->
+  </head>
+  <body>
+      <div class="title">
+          Robin
+      </div>
+      <!-- onclick="window.open('https://trello.com/1/authorize?expiration=never&name=Robin&key=1c4e6885b9d06b44eff07db8fb63b45f')" -->
+      <button type="button" id="TrelloAuth">ClickMe!</button>
+  </body>
+  <script src="background.js"></script>
+  <script src="customJquery.js"></script>
+  <script src="customTrello.js"></script>
+
+  <!-- <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script src="https://trello.com/1/client.js?key=1c4e6885b9d06b44eff07db8fb63b45f"></script> -->
 </html>

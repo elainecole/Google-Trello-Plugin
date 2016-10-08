@@ -1,50 +1,30 @@
-// Elaine Cole—Robin
+// document.addEventListener('DOMContentLoaded', function() {
+//     document.getElementById("TrelloAuth").addEventListener("click", function(){
+                //
 
-var oauth = ChromeExOAuth.initBackgroundPage({
-    'request_url' : 'https://www.google.com/accounts/OAuthGetRequestToken',
-    'authorize_url' : 'https://www.google.com/accounts/OAuthAuthorizeToken',
-    'access_url' : 'https://www.google.com/accounts/OAuthGetAccessToken',
-    'consumer_key' : 'anonymous',
-    'consumer_secret' : 'anonymous',
-    'scope' : 'http://www.google.com/m8/feeds/',
-    'app_name' : 'Robin'
-});
+        // function clickHandler(e) {
+        //     chrome.tabs.update({url: "https://trello.com/1/authorize?expiration=never&name=Robin&key=1c4e6885b9d06b44eff07db8fb63b45f"});
+        //     window.close(); // Note: window.close(), not this.close()
+        // }
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     document.getElementById('TrelloAuth').addEventListener('click', clickHandler);
+        // });
 
-var events = null;
+    // });
+// });
+document.getElementById('TrelloAuth').onclick = function () {
+    var authenticationSuccess = function() { console.log("Successful authentication"); };
+    var authenticationFailure = function() { console.log("Failed authentication"); };
+    console.log($);
 
-function setIcon() {
-    chrome.browserAction.setIcon({'path' : 'image/robin.png'});
+    Trello.authorize({
+      type: 'popup',
+      name: 'Robin',
+      scope: {
+        read: 'true',
+        write: 'true' },
+      expiration: 'never',
+      success: authenticationSuccess,
+      error: authenticationFailure
+    });
 };
-
-function onEvents(text, xhr) {
-    events = [];
-    var data = JSON.parse(text);
-    for (var i = 0, entry; entry = data.feed.entry[i]; i++) {
-        var events = {
-            'title' : entry['title']['$t'],
-            'id' : entry['id']['$t']
-        };
-    }
-};
-
-function getEvents() {
-	  oauth.authorize(function() {
-	    console.log("on authorize");
-	    setIcon();
-	    var url = "https://www.googleapis.com/auth/calendar/default/full";
-	    oauth.sendSignedRequest(url, onContacts, {
-	      'parameters' : {
-	        'alt' : 'json',
-	        'max-results' : 100
-	      }
-	    });
-	  });
-	};
-
-	function logout() {
-	  oauth.clearTokens();
-	  setIcon();
-	};
-
-	setIcon();
-	chrome.browserAction.onClicked.addListener(getEvents);
