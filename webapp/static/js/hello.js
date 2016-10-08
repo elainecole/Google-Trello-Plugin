@@ -48,15 +48,9 @@ hk.HelloView = BB.View.extend({
         });
     },
     googleAuth: function () {
-        Google.authorize({
-            type: 'popup',
-            name: 'Robin',
-            scope: {
-            read: 'true',
-            write: 'true' },
-            expiration: 'never',
-            success: this.authSuccess,
-            error: this.authFail
+        $.ajax({
+            type: 'POST',
+            url: '/api/get_user_boards/'
         });
     }
 });
