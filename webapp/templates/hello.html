@@ -16,9 +16,12 @@
     </div>
 </body>
 
+<script src="https://api.trello.com/1/client.js?key=8375d26f1323687c9c60a19ba6860aac"></script>
 <script type="text/javascript" src="{% static "js/hello.js" %}"></script>
 <script type="text/javascript">
-    var helloView = new cw.HelloView();
+    var user = {{user|safe}};
+
+    var helloView = new hk.HelloView();
 </script>
 
 </html>

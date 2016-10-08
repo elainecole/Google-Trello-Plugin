@@ -12,6 +12,37 @@ hk.HelloView = BB.View.extend({
         this.$el.empty().append(this.template());
     },
 
-    events: {
+    authSuccess: function () {
+        $.ajax({
+            type: 'POST',
+            url: '/api/store_trello_token/',
+            data: {
+                token: Trello.token()
+            },
+            success: function (data) {
+                alert('Thanks for authenticating with Trello, your token is: ' + data.token);
+            }
+        });
     },
+
+    authFail: function () {
+        alert('Authentication with Trello failed.')
+    },
+
+    events: {
+        'click .trello-auth': 'trelloAuth'
+    },
+
+    trelloAuth: function () {
+        Trello.authorize({
+            type: 'popup',
+            name: 'Getting Started Application',
+            scope: {
+            read: 'true',
+            write: 'true' },
+            expiration: 'never',
+            success: this.authSuccess,
+            error: this.authFail
+        });
+    }
 });
