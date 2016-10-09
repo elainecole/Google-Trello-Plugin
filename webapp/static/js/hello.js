@@ -21,7 +21,9 @@ hk.HelloView = BB.View.extend({
                 token: Trello.token()
             },
             success: function (data) {
-                alert('Thanks for authenticating with Trello, your token is: ' + data.token);
+                var me = Trello.members.get('me', function (user) {
+                    alert('Thanks for authenticating with Trello, ' + user.fullName + '!');
+                });
             }
         });
     },
@@ -78,7 +80,7 @@ hk.HelloView = BB.View.extend({
             url: '/api/get_user_boards/',
             success: function (data) {
                 _this.$('.user-holder').empty().append(_this.userTemplate(data));
-                alert('Thank you ' + data.user.fullName);
+                // alert('Thank you ' + data.user.fullName);
             }
         });
     },
