@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Robin",
-  "description": "This extension idk yet",
+  "description": "This extension integrates Trello into Google Calendar",
   "version": "1.0",
 
   "browser_action": {
