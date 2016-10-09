@@ -1,0 +1,15 @@
+{% verbatim %}
+<div class="name">
+    {{user.fullName}}
+</div>
+<div class="user">
+    {{user.username}}
+</div>
+<div class="boards">
+    {{# _.each(boards, function (b) { }}
+        <p>
+            {{b.name}}
+        </p>
+    {{# }); }}
+</div>
+{% endverbatim %}
