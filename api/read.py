@@ -7,5 +7,5 @@ def get_user_boards(request):
     trello = TrelloApi('8375d26f1323687c9c60a19ba6860aac')
     trello.set_token(a.trello_token)
     boards = trello.boards.get('y2OdMQl4')
-    import pdb; pdb.set_trace()
-    return JsonResponse({'data': 'success'})
+    # cards = trello.cards()
+    return JsonResponse({'data': 'success', 'userBoards': boards})
