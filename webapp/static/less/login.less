@@ -40,7 +40,7 @@ html {
             }
 
             .input-field input, .input-field label {
-                color: @dark-white;
+                color: #DDD5D0;
             }
 
             .left-input-field input, .left-input-field label {
@@ -48,8 +48,8 @@ html {
             }
 
             .input-field input {
-                border-bottom: 1px solid @dark-white;
-                box-shadow: 0 1px 0 0 @dark-white;
+                border-bottom: 1px solid #DDD5D0;
+                box-shadow: 0 1px 0 0 #DDD5D0;
             }
 
             .login-button {
@@ -58,7 +58,7 @@ html {
             .register-button {
                 margin-top: 20px;
             }
-            .button {
+            .btn {
               display: inline-block;
               padding: 15px 25px;
               font-size: 24px;
@@ -71,11 +71,17 @@ html {
               border: none;
               border-radius: 15px;
               box-shadow: 0 9px #999;
+              height: 100%;
               }
 
-              .button:hover {background-color: #c41c1c}
+              .btn:hover {background-color: #c41c1c}
 
-              .button:active {
+              .btn:active {
+              background-color: #c41c1c;
+              box-shadow: 0 5px #666;
+              transform: translateY(4px);
+              }
+              .btn:focus {
               background-color: #c41c1c;
               box-shadow: 0 5px #666;
               transform: translateY(4px);
@@ -83,7 +89,9 @@ html {
               .title {
                   color: #C41C1C;
                   text-decoration: none;
-                  size: 70em;
+                  font-family: 'Lato', sans-serif;
+                  font-weight: 600;
+                  font-size: 30px;
               }
         }
     }
