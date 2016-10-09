@@ -1,12 +1,19 @@
 {% verbatim %}
 
 <div class="name">
-    {{user.fullName}}
+    <p class="title-lato">
+        Welcome to Robin, {{user.fullName}}!
+    </p>
 </div>
-<div class="user">
-    {{user.username}}
+<div class="subtitle-lato">
+    <p>
+        Your Trello username is {{user.username}}
+    </p>
 </div>
 <div class="boards">
+    <p class="boards-title">
+        <em>Your boards:</em>
+    </p>
     {{# _.each(boards, function (b) { }}
         <p>
             {{b.name}}
