@@ -8,4 +8,5 @@ def base_view(request):
     if not request.user.is_authenticated():
         return TemplateResponse(request, 'login.html', {})
     account = Account.objects.get(user_id=request.user.id)
+
     return TemplateResponse(request, 'hello.html', {'user': json.dumps(account.id)})

@@ -1,23 +1,32 @@
 {% verbatim %}
-
-<div class="name">
-    <p class="title-lato">
-        Welcome to Robin, {{user.fullName}}!
-    </p>
-</div>
-<div class="subtitle-lato">
-    <p>
-        Your Trello username is {{user.username}}
-    </p>
-</div>
-<div class="boards">
-    <p class="boards-title">
-        <em>Your boards:</em>
-    </p>
-    {{# _.each(boards, function (b) { }}
-        <p>
-            {{b.name}}
+{{# if (this.model.get('user')) { }}
+    <div class="name">
+        <p class="title-lato">
+            {{# if (this.model.get('user')) { }}
+                Welcome to Robin, {{this.model.get('user').fullName}}!
+            {{#} }}
         </p>
-    {{# }); }}
-</div>
+    </div>
+    <div class="subtitle-lato">
+        <p>
+            {{# if (this.model.get('user')) { }}
+                Your Trello username is {{this.model.get('user').username}}
+            {{#} }}
+        </p>
+    </div>
+    <div class="boards">
+        <p class="boards-title">
+            <em>Your boards:</em>
+        </p>
+        {{# _.each(this.model.get('boards'), function (b) { }}
+            <p>
+                {{b.name}}
+            </p>
+        {{# }); }}
+    </div>
+{{# } else { }}
+    <div class="">
+        User not authed yet.
+    </div>
+{{# } }}
 {% endverbatim %}
