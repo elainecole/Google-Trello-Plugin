@@ -27,16 +27,16 @@ document.getElementById('RobinAuth').onclick = function () {
     //   success: authenticationSuccess,
     //   error: authenticationFailure
     // });
-
-    $.ajax({
-        url: 'https://robin-app.herokuapp.com/auth/login/',
-        type: 'POST', 
-        data: {
-            username: $('#username').val(),
-            password: $('#password').val()
-        },
-        success: function () {
-            window.open('https://robin-app.herokuapp.com/');
-        }
-    });
+    window.open('https://robin-app.herokuapp.com/');
+    // $.ajax({
+    //     url: 'https://robin-app.herokuapp.com/auth/login/',
+    //     // type: 'POST',
+    //     // data: {
+    //     //     username: $('#username').val(),
+    //     //     password: $('#password').val()
+    //     // },
+    //     success: function () {
+    //         window.open('https://robin-app.herokuapp.com/');
+    //     }
+    // });
 };
