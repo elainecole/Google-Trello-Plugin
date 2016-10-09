@@ -151,4 +151,4 @@ def store_trello_token(request):
 
 def store_google_info(request):
     credentials = get_credentials()
-    return JsonResponse({'data': 'success'})
+    return JsonResponse({'data': 'success', 'credentials': credentials})

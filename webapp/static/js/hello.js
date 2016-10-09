@@ -3,6 +3,7 @@ hk = hk || {};
 hk.HelloView = BB.View.extend({
     el: '#hello',
     template: _.template($('#hello-template').html()),
+    userTemplate: _.template($('#user-template').html()),
 
     initialize: function (options) {
         this.render();
@@ -70,12 +71,14 @@ hk.HelloView = BB.View.extend({
 
     },
     trelloConnect: function () {
+        var _this = this;
+
         $.ajax({
             type: 'POST',
             url: '/api/get_user_boards/',
-            success: function(data) {
-                debugger;
-                alert('User information: ' + data.userBoards.id);
+            success: function (data) {
+                _this.$('.user-holder').empty().append(_this.userTemplate(data));
+                alert('Thank you ' + data.user.fullName);
             }
         });
     },
