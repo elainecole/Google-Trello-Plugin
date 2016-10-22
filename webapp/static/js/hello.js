@@ -29,6 +29,7 @@ hk.HelloView = BB.View.extend({
     },
 
     authSuccess: function () {
+        __this = this
         $.ajax({
             type: 'POST',
             url: '/api/store_trello_token/',
@@ -38,7 +39,8 @@ hk.HelloView = BB.View.extend({
             success: function (data) {
                 helloView.model.fetch();
                 var me = Trello.members.get('me', function (user) {
-                    // alert('Thanks for authenticating with Trello, ' + user.fullName + '!');
+                    debugger;
+                    // alert('Thanks for authenticating with Trello, ' + user.get('idOrganization') + '!');
                 });
             }
         });
@@ -54,12 +56,13 @@ hk.HelloView = BB.View.extend({
     //
     events: {
         'click .trello-auth': 'trelloAuth',
-        'click .google-auth': 'googleAuth',
+        'click .google-auth': 'googleAuth'
         // 'click .trello-test': 'trelloConnect'
 
     },
 
     trelloAuth: function () {
+        _this = this;
         Trello.authorize({
             type: 'popup',
             name: 'Robin',
