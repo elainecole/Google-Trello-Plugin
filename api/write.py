@@ -135,18 +135,12 @@ import requests
 #       app.debug = False
 #       app.run()
 
-
-
-
-
-
 def store_trello_token(request):
     token = request.POST['token']
 
     a = Account.objects.get(user_id=request.user.id)
     a.trello_token = token
     a.save()
-
     return JsonResponse({'token': token})
 
 def store_google_info(request):
