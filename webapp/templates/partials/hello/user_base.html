@@ -22,7 +22,8 @@
         {{# _.each(this.model.get('boards'), function (b) { }}
             <p>
                 {{b.name}}<br>
-                Board ID: {{b.idOrganization}}
+                <em>Board ID:</em> {{b.id}}<br>
+                <em>Team ID:</em> {{b.idOrganization}}
             </p>
         {{# }); }}
     </div>
