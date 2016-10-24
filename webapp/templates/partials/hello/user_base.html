@@ -12,7 +12,7 @@
             {{# if (this.model.get('user')) { }}
                 Your Trello username is {{this.model.get('user').username}}
             {{#} }}
-            {{this.model.get('user').toString()}}
+            <!-- {{this.model.get('user').toString()}} -->
         </p>
     </div>
     <div class="boards">
@@ -22,11 +22,11 @@
         {{# _.each(this.model.get('boards'), function (b) { }}
             <p>
                 {{b.name}}
-                {{b.idOrganization}}
+                Board ID: {{b.idOrganization}}
             </p>
         {{# }); }}
     </div>
-    <div class="organizations">
+    <!-- <div class="organizations">
         <p class="organizations-title">
             <em>Your teams:</em>
         </p>
@@ -35,7 +35,7 @@
                 {{b.displayName}}
             </p>
         {{# }); }}
-    </div>
+    </div> -->
 {{# } else { }}
     <div class="">
         User not authed yet.
