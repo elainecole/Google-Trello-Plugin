@@ -38,8 +38,9 @@ hk.HelloView = BB.View.extend({
             },
             success: function (data) {
                 helloView.model.fetch();
+                xoxo = this
                 var me = Trello.members.get('me', function (user) {
-                    debugger;
+                    // debugger;
                     // alert('Thanks for authenticating with Trello, ' + user.get('idOrganization') + '!');
                 });
             }

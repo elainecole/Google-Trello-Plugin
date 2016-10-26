@@ -10,10 +10,19 @@ def get_user_boards(request):
         user = trello.members.get('me')
         boards = []
         organizations = []
+        lists = []
+        cards = []
+        for j in user.get('idOrganizations'):
+            organizations.append(trello.organizations.get(j))
         for i in user.get('idBoards'):
             boards.append(trello.boards.get(i))
-            organizations.append(trello.boards.get(i).get('idOrganization'))
-        return JsonResponse({'data': 'success', 'user': user, 'boards': boards, 'organizations': organizations})
+            cards.append(trello.boards.get(i).get('cards'))
+            # organizations.append(user.organizations.get(i))
+            # organizations.append(trello.organizations.get(i))
+            # lists.append(trello.boards.get(i).get('lists').('name'))
+        # for j in user.get('idOrganization'):
+        #     organization.append(trello.organizations.get(j))
+        return JsonResponse({'data': 'success', 'user': user, 'boards': boards, 'organizations': organizations, 'lists': lists, 'cards': cards})
     else:
         return JsonResponse({'data': 'Not Authenticated Yet'})
 

@@ -22,23 +22,30 @@
         {{# _.each(this.model.get('boards'), function (b) { }}
             <p>
                 {{b.name}}<br>
-                <small><em>Board ID:</em> {{b.id}}<br>
-                <em>Team ID:</em> {{b.idOrganization}}</small><br>
-                <!-- <small><em>Lists:</em></small>
-                {{b.lists}} -->
+                <!-- <small><b>{{b.desc}}</small></b><br> -->
+                <!-- <small><em>Board ID:</em> {{b.id}}<br>
+                <em>Team ID:</em> {{b.idOrganization}}</small><br> -->
+                <!-- <small><em>Lists:</em></small> -->
+                <!-- {{b.lists}} -->
+                <!-- {{# _.each(b.lists, function (l) { }}
+                    <p>{{l.name}}</p>
+                {{# }); }} -->
+
             </p>
         {{# }); }}
     </div>
-    <!-- <div class="organizations">
+    <div class="organizations">
         <p class="organizations-title">
-            <em>Your teams:</em>
+            <br><em>Your teams:</em>
+            {{# _.each(this.model.get('organizations'), function (o) { }}
+                <p>
+                    {{o.name}}<br>
+                    <small>{{o.desc}}<br></small>
+                </p>
+            {{# }); }}
         </p>
-        {{# _.each(this.model.get('user').organizations, function (b) { }}
-            <p>
-                {{b.displayName}}
-            </p>
-        {{# }); }}
-    </div> -->
+
+    </div>
 {{# } else { }}
     <div class="">
         User not authed yet.
