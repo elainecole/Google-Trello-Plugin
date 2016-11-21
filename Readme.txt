@@ -1,4 +1,4 @@
-Elaine Cole & Kevin Cuadrado
+Elaine Cole
 
 437s Software Engineering Workshop
 
