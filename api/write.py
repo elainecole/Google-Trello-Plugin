@@ -1,58 +1,19 @@
-from __future__ import print_function
-import httplib2
-import os
-
-try:
-    import argparse
-    flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
-except ImportError:
-    flags = None
-
-import json
-
-import flask
-import httplib2
-
-from apiclient import discovery
-from oauth2client import client
+from api.models import Account
+from django.http import JsonResponse
+from frontend_views.views import flow
 
 
-app = flask.Flask(__name__)
+def store_trello_token(request):
+    token = request.POST['token']
+
+    a = Account.objects.get(user_id=request.user.id)
+    a.trello_token = token
+    a.save()
+    return JsonResponse({'token': token})
 
 
-@app.route('/')
-def index():
-  if 'credentials' not in flask.session:
-    return flask.redirect(flask.url_for('oauth2callback'))
-  credentials = client.OAuth2Credentials.from_json(flask.session['credentials'])
-  if credentials.access_token_expired:
-    return flask.redirect(flask.url_for('oauth2callback'))
-  else:
-    http_auth = credentials.authorize(httplib2.Http())
-    drive_service = discovery.build('drive', 'v2', http_auth)
-    files = drive_service.files().list().execute()
-    return json.dumps(files)
-
-
-@app.route('/oauth2callback')
-def oauth2callback():
-  flow = client.flow_from_clientsecrets(
-      'client_secrets.json',
-      scope='https://www.googleapis.com/auth/drive.metadata.readonly',
-      redirect_uri=flask.url_for('oauth2callback', _external=True),
-      include_granted_scopes=True)
-  if 'code' not in flask.request.args:
-    auth_uri = flow.step1_get_authorize_url()
-    return flask.redirect(auth_uri)
-  else:
-    auth_code = flask.request.args.get('code')
+def google_auth_callback(request):
+    auth_code = request.GET.get('code')
     credentials = flow.step2_exchange(auth_code)
-    flask.session['credentials'] = credentials.to_json()
-    return flask.redirect(flask.url_for('index'))
-
-
-if __name__ == '__main__':
-  import uuid
-  app.secret_key = str(uuid.uuid4())
-  app.debug = False
-  app.run()
+    request.session['credentials'] = credentials.to_json()
+    return JsonResponse({'status': 'success'})

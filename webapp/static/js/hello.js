@@ -38,10 +38,7 @@ hk.HelloView = BB.View.extend({
             },
             success: function (data) {
                 helloView.model.fetch();
-                xoxo = this
                 var me = Trello.members.get('me', function (user) {
-                    // debugger;
-                    // alert('Thanks for authenticating with Trello, ' + user.get('idOrganization') + '!');
                 });
             }
         });
@@ -50,16 +47,11 @@ hk.HelloView = BB.View.extend({
     authFail: function () {
         alert('Authentication with Trello failed.')
     },
-    // flow = client.flow_from_clientsecrets(
-    //     'client_secrets.json',
-    //     scope='https://www.googleapis.com/auth/calendar',
-    //     redirect_uri='http://robin-app.herokuapp.com/api/store_google_info')
-    //
+
     events: {
         'click .trello-auth': 'trelloAuth',
-        'click .google-auth': 'googleAuth'
-        // 'click .trello-test': 'trelloConnect'
-
+        'click .google-auth': 'googleAuth',
+        'click .google-test': 'googleTest'
     },
 
     trelloAuth: function () {
@@ -75,34 +67,32 @@ hk.HelloView = BB.View.extend({
             error: this.authFail
         });
     },
+
     googleAuth: function () {
-        // auth_uri = flow.step1_get_authorize_url()
-        // window.open('https://accounts.google.com/o/oauth2/v2/auth?scope=email%20profile&state=security_token%3D138r5719ru3e1%26url%3Dhttps://oa2cb.example.com/myHome&redirect_uri=https%3A%2F%2Foauth2.example.com%2Fcode&,response_type=code&client_id=949315674402-adp43f1anpdi57ajb7liccbkfet1avjl.apps.googleusercontent.com')
-        // $.ajax({
-        //     type: 'POST',
-        //     url: '/api/store_google_info/'
-        // });
-        // credentials = flow.step2_exchange(auth_code)
+        window.open(auth_uri);
+    },
+
+    googleTest: function () {
         $.ajax({
             type: 'POST',
-            url: '/api/oauth2callback/',
-            success: function(data) {
+            url: '/api/get_recent_events/',
+            success: function (data) {
                 debugger;
             }
         });
-
     },
+
     trelloConnect: function () {
         var _this = this;
 
-        // $.ajax({
-        //     type: 'POST',
-        //     url: '/api/get_user_boards/',
-        //     success: function (data) {
-        //         _this.$('.user-holder').empty().append(_this.userTemplate(data));
-        //         // alert('Thank you ' + data.user.fullName);
-        //     }
-        // });
+        $.ajax({
+            type: 'POST',
+            url: '/api/get_user_boards/',
+            success: function (data) {
+                _this.$('.user-holder').empty().append(_this.userTemplate(data));
+                // alert('Thank you ' + data.user.fullName);
+            }
+        });
     },
     // trelloBoards: function() {
     //     $.ajax({

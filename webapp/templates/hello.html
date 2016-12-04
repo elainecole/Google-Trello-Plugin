@@ -25,7 +25,8 @@
 <script src="https://api.trello.com/1/client.js?key=8375d26f1323687c9c60a19ba6860aac"></script>
 <script type="text/javascript" src="{% static "js/hello.js" %}"></script>
 <script type="text/javascript">
-    var user = {{user|safe}};
+    var user = {{user|safe}},
+        auth_uri = {{auth_uri|safe}};
 
     var helloView = new hk.HelloView();
 </script>
