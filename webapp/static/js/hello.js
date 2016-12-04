@@ -38,8 +38,6 @@ hk.HelloView = BB.View.extend({
             },
             success: function (data) {
                 helloView.model.fetch();
-                var me = Trello.members.get('me', function (user) {
-                });
             }
         });
     },
