@@ -11,6 +11,7 @@ hk.HelloView = BB.View.extend({
     el: '#hello',
     template: _.template($('#hello-template').html()),
     userTemplate: _.template($('#user-template').html()),
+    userTemplateGoogle: _.template($('#user-google').html()),
 
     initialize: function (options) {
 
@@ -71,11 +72,12 @@ hk.HelloView = BB.View.extend({
     },
 
     googleTest: function () {
+        var _this = this;
         $.ajax({
             type: 'POST',
             url: '/api/get_recent_events/',
             success: function (data) {
-                debugger;
+                _this.$('.user-holder').empty().append(_this.userTemplateGoogle(data));
             }
         });
     },
