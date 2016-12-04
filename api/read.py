@@ -9,7 +9,7 @@ from oauth2client import client
 def get_user_boards(request):
     account = Account.objects.get(user_id=request.user.id)
     if account.trello_token:
-        trello = TrelloApi('8375d26f1323687c9c60a19ba6860aac')
+        trello = TrelloApi('1c4e6885b9d06b44eff07db8fb63b45f')
         trello.set_token(account.trello_token)
         user = trello.members.get('me')
         boards = []
