@@ -76,24 +76,24 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'webapp/static'),
 )
 
-if 'HACKATHON_KIT_LOCAL_NAME' not in os.environ:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# if 'HACKATHON_KIT_LOCAL_NAME' not in os.environ:
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-    DATABASES = {
-        'default': dj_database_url.parse(get_env_variable("DATABASE_URL"))
-    }
-else:
-    DATABASES = {
-        'default': {
-            'HOST': 'localhost',
-            'PORT': '5432',
-            'NAME': get_env_variable("HACKATHON_KIT_LOCAL_NAME"),
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'USER': get_env_variable("HACKATHON_KIT_LOCAL_USERNAME"),
-            'PASSWORD': get_env_variable("HACKATHON_KIT_LOCAL_PASSWORD"),
-        },
-    }
+DATABASES = {
+    'default': dj_database_url.parse(get_env_variable("DATABASE_URL"))
+}
+# else:
+#     DATABASES = {
+#         'default': {
+#             'HOST': 'localhost',
+#             'PORT': '5432',
+#             'NAME': get_env_variable("HACKATHON_KIT_LOCAL_NAME"),
+#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#             'USER': get_env_variable("HACKATHON_KIT_LOCAL_USERNAME"),
+#             'PASSWORD': get_env_variable("HACKATHON_KIT_LOCAL_PASSWORD"),
+#         },
+#     }
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'

@@ -4,10 +4,16 @@ import json
 from oauth2client import client
 import os
 
+
+if 'ROBIN_LOCAL' in os.environ:
+    redirect_uri = 'http://127.0.0.1:8000/api/google_auth_callback'
+else:
+    redirect_uri = 'https://robin-app.herokuapp.com/api/google_auth_callback'
+
 flow = client.flow_from_clientsecrets(
     os.getcwd() + '/api/client_secret.json',
     scope='https://www.googleapis.com/auth/calendar',
-    redirect_uri='http://127.0.0.1:8000/api/google_auth_callback')
+    redirect_uri=redirect_uri)
 
 
 def base_view(request):
