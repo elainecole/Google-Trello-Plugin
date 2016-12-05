@@ -7,9 +7,8 @@
         <Require feature="google.calendar-0.5"/>
             <Require feature="opensocial-0.8" />
     </ModulePrefs>
-    <Content type="html" view="home">
+    <Content type="html" view="canvas">
         <![CDATA[
-        <img src="http://www.elainemcole.com/robin.png" style="width:50px;" alt="Robin">
         <p>Welcome to Robin!</p>
         ]]>
     </Content>
