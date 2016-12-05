@@ -9,13 +9,13 @@
     </ModulePrefs>
     <Content type="html" view="home">
         <![CDATA[
-        <img src="http://www.elainemcole.com/robin.png" style="width:200px;" alt="Robin">
+        <img src="http://www.elainemcole.com/robin.png" style="width:50px;" alt="Robin">
         <p>Welcome to Robin!</p>
         ]]>
     </Content>
     <Content type="html" view="canvas">
         <![CDATA[
-          Hello, big world!
+        Hello, world!
         ]]>
     </Content>
 </Module>
