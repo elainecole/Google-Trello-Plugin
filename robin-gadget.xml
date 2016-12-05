@@ -5,16 +5,10 @@
         <Icon style="width:50%;">http://www.elainemcole.com/robin.png</Icon>
         <Require feature="dynamic-height"/>
         <Require feature="google.calendar-0.5"/>
-            <Require feature="opensocial-0.8" />
     </ModulePrefs>
     <Content type="html" view="canvas">
         <![CDATA[
             Welcome to Robin.
-        ]]>
-    </Content>
-    <Content type="html" view="canvas">
-        <![CDATA[
-        Hello, world!
         ]]>
     </Content>
 </Module>
