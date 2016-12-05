@@ -9,7 +9,7 @@
     </ModulePrefs>
     <Content type="html" view="canvas">
         <![CDATA[
-        <p>Welcome to Robin!</p>
+            Welcome to Robin.
         ]]>
     </Content>
     <Content type="html" view="canvas">
