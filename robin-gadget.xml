@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Module>
+    <ModulePrefs title="Robin" height="61" scrolling="false" description="Trello Plugin" title-url="https://robin-app.herokuapp.com/" author="Elaine Cole">
+        <!-- <Icon>http://www.elainemcole.com/robin.png</Icon> -->
+        <Require feature="dynamic-height"/>
+        <Require feature="google.calendar-0.5"/>
+            <Require feature="opensocial-0.8" />
+    </ModulePrefs>
+    <Content type="html" view="home">
+        <![CDATA[
+          Hello, small world!
+        ]]>
+    </Content>
+    <Content type="html" view="canvas">
+        <![CDATA[
+          Hello, big world!
+        ]]>
+    </Content>
+</Module>
