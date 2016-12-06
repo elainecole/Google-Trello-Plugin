@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Module>
-    <ModulePrefs title="Robin" scrolling="true" description="Trello Plugin" title-url="https://robin-app.herokuapp.com/" author="Elaine Cole" thumbnail="http://elainemcole.com/robinsmall.png">
+    <ModulePrefs title="Robin" scrolling="true" description="Trello Plugin" title-url="https://robin-app.herokuapp.com/" author="Elaine Cole" thumbnail="https://elainemcole.com/robinsmall.png">
         <Require feature="google.calendar-0.5"/>
         <Require feature="dynamic-height"/>
         <Require feature="tabs"/>
@@ -31,12 +31,41 @@
                     padding-top: 60px;
                     padding-bottom: 100px;
                 }
+                .btn {
+                  display: inline-block;
+                  padding: 15px 25px;
+                  font-size: 24px;
+                  cursor: pointer;
+                  text-align: center;
+                  text-decoration: none;
+                  outline: none;
+                  color: #fff;
+                  background-color: #c41c1c;
+                  border: none;
+                  border-radius: 15px;
+                  box-shadow: 0 9px #999;
+                  height: 100%;
+                  }
+
+                  .btn:hover {background-color: #c41c1c; box-shadow: 0 9px #999;}
+
+                  .btn:active {
+                  background-color: #c41c1c;
+                  box-shadow: 0 5px #666;
+                  transform: translateY(4px);
+                  }
+                  .btn:focus {
+                  background-color: #c41c1c;
+                  box-shadow: 0 5px #666;
+                  transform: translateY(4px);
+                  }
                 </style>
                 <center>
                     Welcome to Robin
                 </center>
                 <div class="content">
                     Have you logged in yet?
+                    <input type="button" class="btn" target="_blank" onclick="location.href='http://robin-app.heroku.com';" value="Use Robin!"/>
                 </div>
                 <div class="footer" style="text-align: right;">
                     <img src="http://elainemcole.com/robinsmall.png" alt="logo" height="32" width="32">
@@ -44,6 +73,7 @@
             </body>
             <script> // Force the screen to resize
             gadgets.window.adjustHeight();
+            $.ajax({url: ‘url’, success: function (data) { console.log(data)}})
             </script>
         </html>
 
